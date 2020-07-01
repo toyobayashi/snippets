@@ -1,4 +1,4 @@
-/** @type {{ generate: (time?: number) => string; isValid: (id: string) => boolean; reset: () => void }} */
+/** @type {{ generate: (time?: number) => string; validate: (id: string) => boolean; reset: () => void }} */
 var oidUtil = (function () {
   var index = 0;
   var PROCESS_UNIQUE = [];
@@ -54,7 +54,7 @@ var oidUtil = (function () {
    * @param {string} id - The string which need to be determined
    * @returns {boolean} True if given string is a valid object ID
    */
-  function isValid (id) {
+  function validate (id) {
     return (typeof id === 'string' && id.length === 24 && checkForHexRegExp.test(id));
   }
 
@@ -62,7 +62,7 @@ var oidUtil = (function () {
 
   return {
     generate: generate,
-    isValid: isValid,
+    validate: validate,
     reset: reset
   };
 })();
